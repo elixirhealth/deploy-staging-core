@@ -1,4 +1,5 @@
 .terraform/
+terraform.tfplan
 
 # secrets
 gcp_credentials.json

@@ -15,11 +15,11 @@ variable "region" {
 }
 
 variable "key_ring_name" {
-  default = "name of key ring for secrets"
+  description = "name of key ring for secrets"
 }
 
 variable "tf_secrets_key_name" {
-  default = "name of key for encrypting terraform secrets"
+  description = "name of key for encrypting terraform secrets"
 }
 
 ###########
@@ -39,6 +39,12 @@ variable "gcp_credentials_file" {
   default     = "gcp_credentials.json"
 }
 
-variable "gce_zone" {
-  default = "us-east1-b"
+variable "zone" {
+  description = "GCP availability zone to put resources into"
+  default     = "us-east1-b"
+}
+
+variable "node_disk_size" {
+  description = "size (GB) of disk on each Kubernetes node"
+  default     = 25
 }

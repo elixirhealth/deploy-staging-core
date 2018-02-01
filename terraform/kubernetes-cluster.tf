@@ -1,24 +1,10 @@
 resource "google_container_cluster" "primary" {
-  name = "${var.cluster_name}"
-  zone = "${var.gce_zone}"
+  name               = "${var.cluster_name}"
+  initial_node_count = 1
 
-  node_pool {
-    name       = "n1-highmem-2"
-    node_count = 0
-
-    node_config {
-      machine_type = "n1-highmem-2"
-      disk_size_gb = 25
-
-      oauth_scopes = [
-        "https://www.googleapis.com/auth/compute",
-        "https://www.googleapis.com/auth/devstorage.read_only",
-        "https://www.googleapis.com/auth/logging.write",
-        "https://www.googleapis.com/auth/monitoring",
-      ]
-    }
-
-    # TODO (drausin) autoscaling, management blocks?
+  node_config {
+    machine_type = "n1-standard-1"
+    disk_size_gb = "${var.node_disk_size}"
   }
 
   master_auth {
@@ -26,10 +12,19 @@ resource "google_container_cluster" "primary" {
     password = "${var.kubernetes_master_password}"
   }
 
-  monitoring_service = "monitoring.googleapis.com"
-  logging_service    = "logging.googleapis.com"
-
   provisioner "local-exec" {
-    command = "gcloud container clusters get-credentials ${var.cluster_name} --project ${var.gcp_project} --zone ${var.gce_zone}"
+    command = "gcloud container clusters get-credentials ${var.cluster_name} --project ${var.gcp_project} --zone ${var.zone}"
   }
+}
+
+resource "google_container_node_pool" "n1-highmem-2" {
+  name    = "n1-highmem-2"
+  cluster = "${google_container_cluster.primary.id}"
+
+  node_config {
+    machine_type = "n1-highmem-2"
+    disk_size_gb = "${var.node_disk_size}"
+  }
+
+  node_count = 2
 }
