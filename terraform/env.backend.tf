@@ -1,8 +1,8 @@
 terraform {
   backend "gcs" {
-    bucket      = "elxir-deploy-staging-clusters"
+    bucket      = "elixir-deploy-staging-clusters"
     prefix      = "primary-core/terraform"
-    project     = "elxir-deply-staging"
+    project     = "elixir-deploy-staging"
     region      = "us-east1"
     credentials = "gcp_credentials.json"
   }
