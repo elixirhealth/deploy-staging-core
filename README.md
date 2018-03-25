@@ -1,5 +1,5 @@
 # deploy-staging-core
-This repo defines the core infrastructure and config for the Elxir staging environment.
+This repo defines the core infrastructure and config for the Elixir staging environment.
 
 ### Usage
 
