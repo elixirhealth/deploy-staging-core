@@ -14,12 +14,20 @@ variable "region" {
   description = "region to deploy infrastructure in"
 }
 
-variable "key_ring_name" {
-  description = "name of key ring for secrets"
+variable "secrets_core_key_ring_name" {
+  description = "secrets key ring name for core infra"
 }
 
-variable "tf_secrets_key_name" {
-  description = "name of key for encrypting terraform secrets"
+variable "tf_secrets_core_key_name" {
+  description = "terraform secrets key name for core infra"
+}
+
+variable "secrets_app_key_ring_name" {
+  description = "secrets key ring name for application infra"
+}
+
+variable "tf_secrets_app_key_name" {
+  description = "terraform secrets key name for application infra"
 }
 
 ###########
