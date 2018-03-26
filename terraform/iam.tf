@@ -8,7 +8,7 @@ data "google_iam_policy" "deploy-app-admin" {
     role = "roles/compute.storageAdmin"
 
     members = [
-      "serviceAccount:terraform-app@elixir-deploy-staging.iam.gserviceaccount.com",
+      "serviceAccount:terraform-app@elixir-deploy-staging-1.iam.gserviceaccount.com",
     ]
   }
 
@@ -16,7 +16,7 @@ data "google_iam_policy" "deploy-app-admin" {
     role = "roles/compute.securityAdmin"
 
     members = [
-      "serviceAccount:terraform-app@elixir-deploy-staging.iam.gserviceaccount.com",
+      "serviceAccount:terraform-app@elixir-deploy-staging-1.iam.gserviceaccount.com",
     ]
   }
 
@@ -24,7 +24,7 @@ data "google_iam_policy" "deploy-app-admin" {
     role = "roles/storage.objectAdmin"
 
     members = [
-      "serviceAccount:terraform-app@elixir-deploy-staging.iam.gserviceaccount.com",
+      "serviceAccount:terraform-app@elixir-deploy-staging-1.iam.gserviceaccount.com",
     ]
   }
 }
