@@ -27,4 +27,12 @@ data "google_iam_policy" "deploy-app-admin" {
       "serviceAccount:terraform-app@elixir-deploy-staging-1.iam.gserviceaccount.com",
     ]
   }
+
+  binding {
+    role = "roles/datastore.owner"
+
+    members = [
+      "serviceAccount:app-catalog@elixir-deploy-staging-1.iam.gserviceaccount.com",
+    ]
+  }
 }
